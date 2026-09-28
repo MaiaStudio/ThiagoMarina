@@ -1,0 +1,329 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100svh;
+  min-height: 38rem;
+  overflow: hidden;
+  background: var(--h01-background);
+  color: var(--h01-foreground);
+}
+
+.background,
+.imageReveal,
+.imageScroll,
+.imageMotion,
+.overlay,
+.curtains,
+.content {
+  position: absolute;
+  inset: 0;
+}
+
+.background {
+  z-index: 0;
+  background:
+    radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--h01-accent), transparent 90%), transparent 50%),
+    var(--h01-background);
+}
+
+.imageReveal {
+  z-index: 1;
+  overflow: hidden;
+}
+
+.imageScroll,
+.imageMotion {
+  will-change: transform;
+}
+
+.imageMotion {
+  transform: scale(1.065);
+}
+
+.imageButton {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.overlay {
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(5, 7, 7, 0.2) 0%, transparent 32%, transparent 60%, rgba(5, 7, 7, 0.3) 100%),
+    radial-gradient(ellipse at 50% 48%, transparent 54%, rgba(4, 5, 5, 0.12) 100%);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.curtains {
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.curtainTop,
+.curtainBottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: calc(50% + 1px);
+  background:
+    radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--h01-accent), transparent 94%), transparent 38%),
+    var(--h01-background);
+  will-change: transform;
+}
+
+.curtainTop {
+  top: 0;
+}
+
+.curtainBottom {
+  bottom: 0;
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--h01-accent), transparent 94%), transparent 38%),
+    var(--h01-background);
+}
+
+.content {
+  z-index: 5;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  padding: clamp(1.5rem, 4vw, 3.75rem) clamp(1rem, 4vw, 4rem) clamp(5rem, 9vh, 7rem);
+  text-align: center;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--h01-foreground);
+  font-size: clamp(0.64rem, 0.72vw, 0.75rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: none;
+  will-change: opacity, transform;
+}
+
+.meta span + span::before {
+  content: "";
+  display: inline-block;
+  width: 1.7rem;
+  height: 1px;
+  margin-right: 0.9rem;
+  vertical-align: middle;
+  background: color-mix(in srgb, var(--h01-accent), transparent 15%);
+}
+
+.names {
+  align-self: center;
+  width: min(100%, 72rem);
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.1rem, 9vw, 8.2rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.79;
+  text-transform: uppercase;
+}
+
+.longNames {
+  font-size: clamp(2.9rem, 8vw, 7.4rem);
+}
+
+.veryLongNames {
+  font-size: clamp(2.65rem, 7vw, 6.5rem);
+}
+
+.nameMask {
+  display: block;
+  max-width: 100%;
+  padding: 0.08em 0.07em;
+  overflow: hidden;
+}
+
+.nameLine,
+.ampersand {
+  display: inline-block;
+  max-width: 100%;
+  opacity: 0;
+  transform: none;
+  will-change: opacity, transform;
+}
+
+.nameLine {
+  white-space: nowrap;
+}
+
+.ampersandMask {
+  margin-block: 0.02em 0.07em;
+}
+
+.ampersand {
+  color: var(--h01-accent);
+  font-size: 0.36em;
+  font-style: italic;
+  line-height: 0.8;
+}
+
+.subtitle {
+  margin: 0;
+  color: color-mix(in srgb, var(--h01-foreground), transparent 8%);
+  font-size: clamp(0.62rem, 0.75vw, 0.74rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: none;
+  will-change: opacity, transform;
+}
+
+.scrollCue {
+  position: absolute;
+  z-index: 6;
+  right: clamp(1.25rem, 3vw, 3rem);
+  bottom: clamp(1.25rem, 3vw, 2.5rem);
+  display: grid;
+  justify-items: center;
+  gap: 0.65rem;
+  color: color-mix(in srgb, var(--h01-foreground), transparent 15%);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: none;
+  will-change: opacity, transform;
+}
+
+.scrollCue i {
+  display: block;
+  width: 1px;
+  height: 2.3rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--h01-foreground), transparent 68%);
+}
+
+.scrollCue i::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 55%;
+  background: var(--h01-accent);
+  transform-origin: top;
+  animation: h01-scroll-line 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes h01-scroll-line {
+  0% {
+    transform: translateY(-110%) scaleY(0.45);
+  }
+
+  45% {
+    transform: translateY(35%) scaleY(1);
+  }
+
+  100% {
+    transform: translateY(210%) scaleY(0.55);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 34rem;
+  }
+
+  .imageMotion {
+    transform: scale(1.04);
+  }
+
+  .content {
+    padding: max(1.4rem, env(safe-area-inset-top)) 1rem max(5rem, env(safe-area-inset-bottom));
+  }
+
+  .names {
+    width: 100%;
+    font-size: clamp(2.7rem, 12.4vw, 5rem);
+    letter-spacing: -0.06em;
+    line-height: 0.84;
+  }
+
+  .longNames {
+    font-size: clamp(2.35rem, 10.6vw, 4.4rem);
+  }
+
+  .veryLongNames {
+    font-size: clamp(2.05rem, 9.2vw, 4rem);
+  }
+
+  .meta {
+    letter-spacing: 0.16em;
+  }
+
+  .scrollCue {
+    right: 1rem;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-height: 650px) and (orientation: landscape) {
+  .hero {
+    min-height: 31rem;
+  }
+
+  .content {
+    padding-block: 1.25rem 4.25rem;
+  }
+
+  .names {
+    font-size: clamp(3rem, 13vh, 6rem);
+    line-height: 0.77;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curtainTop {
+    transform: translateY(-100%) !important;
+  }
+
+  .curtainBottom {
+    transform: translateY(100%) !important;
+  }
+
+  .imageScroll,
+  .imageMotion,
+  .meta,
+  .nameLine,
+  .ampersand,
+  .subtitle,
+  .scrollCue {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    will-change: auto;
+  }
+
+  .curtainTop,
+  .curtainBottom {
+    will-change: auto;
+  }
+
+  .scrollCue i::after {
+    animation: none;
+    transform: none;
+  }
+}

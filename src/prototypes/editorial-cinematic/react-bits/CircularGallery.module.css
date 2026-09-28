@@ -1,0 +1,40 @@
+.gallery {
+  position: relative;
+  width: 100%;
+  height: 102svh;
+  min-height: 42rem;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  outline: none;
+}
+
+.gallery[data-dragging="true"] { cursor: grabbing; }
+.gallery:focus-visible::after { position: absolute; z-index: 4; inset: 1rem; border: 1px solid rgba(242, 238, 228, 0.62); content: ""; pointer-events: none; }
+.canvas { position: relative; z-index: 2; width: 100%; height: 100%; }
+.fallback { position: absolute; inset: 0; display: grid; grid-template-columns: 0.72fr 1.1fr 0.76fr 0.58fr; align-items: center; gap: clamp(0.55rem, 1.4vw, 1.25rem); height: 100%; padding: 5rem clamp(1rem, 4vw, 4rem); }
+.gallery[data-enhanced="true"] .fallback { visibility: hidden; }
+.fallbackImage { position: relative; aspect-ratio: 3 / 4; padding: 0; overflow: hidden; border: 0; background: transparent; cursor: zoom-in; }
+.fallbackImage:nth-child(2) { transform: translateY(-5%); }
+.fallbackImage:nth-child(4) { transform: translateY(7%); }
+.fallbackImage img { width: 100%; height: 100%; object-fit: cover; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 899px), (prefers-reduced-motion: reduce) {
+  .gallery { height: auto; min-height: 0; padding: 4rem 0 9rem; overflow: visible; cursor: default; touch-action: auto; }
+  .canvas { display: none; }
+  .fallback { position: relative; inset: auto; display: flex; flex-direction: column; gap: 3.5rem; height: auto; padding: 0; }
+  .gallery[data-enhanced="true"] .fallback { visibility: visible; }
+  .fallbackImage { width: 72vw; max-width: 34rem; aspect-ratio: 4 / 5; transform: none !important; }
+  .fallbackImage:nth-child(odd) { align-self: flex-start; }
+  .fallbackImage:nth-child(even) { width: 63vw; align-self: flex-end; }
+  .fallbackImage:nth-child(3) { width: 84vw; max-width: 43rem; aspect-ratio: 5 / 4; }
+}
+
+@media (max-width: 599px) {
+  .gallery { padding-top: 2rem; }
+  .fallback { gap: 2.6rem; }
+  .fallbackImage { width: 80vw; }
+  .fallbackImage:nth-child(even) { width: 70vw; }
+  .fallbackImage:nth-child(3) { width: 94vw; }
+}

@@ -1,0 +1,69 @@
+.column {
+  --testimonial-duration: 36s;
+  --testimonial-direction: normal;
+  position: relative;
+  height: min(42rem, 62svh);
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent, black 9%, black 91%, transparent);
+}
+
+.track {
+  display: grid;
+  gap: 0.85rem;
+  animation: testimonial-column-scroll var(--testimonial-duration) linear infinite var(--testimonial-direction);
+  will-change: transform;
+}
+
+.column:hover .track,
+.column:focus-within .track {
+  animation-play-state: paused;
+}
+
+.card {
+  display: grid;
+  gap: 1.25rem;
+  min-height: 10.5rem;
+  padding: 1.35rem;
+  border: 1px solid color-mix(in srgb, #24231f, transparent 82%);
+  background: color-mix(in srgb, #f2eee4, white 46%);
+  box-shadow: 0 1.2rem 2.4rem rgba(37, 36, 31, 0.06);
+}
+
+.message {
+  margin: 0;
+  color: color-mix(in srgb, #24231f, transparent 13%);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.author {
+  display: grid;
+  gap: 0.18rem;
+  align-self: end;
+}
+
+.name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  letter-spacing: -0.025em;
+}
+
+.relation {
+  color: #60634e;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@keyframes testimonial-column-scroll {
+  to { transform: translateY(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .column { height: auto; mask-image: none; }
+  .track { animation: none; }
+  .card[aria-hidden="true"] { display: none; }
+}
