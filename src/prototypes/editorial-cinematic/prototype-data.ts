@@ -31,6 +31,7 @@ export type EditorialCinematicData = {
   coupleImages: readonly PrototypeImage[];
   portraitImages: readonly PrototypeImage[];
   celebrationImages: readonly PrototypeImage[];
+  guests?: { headline: string; images: readonly PrototypeImage[] };
   guestbook: {
     messages: readonly {
       name: string;

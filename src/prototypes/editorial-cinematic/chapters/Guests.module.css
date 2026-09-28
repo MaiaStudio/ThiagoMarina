@@ -1,0 +1,5 @@
+.section { position: relative; padding: clamp(5rem, 10vw, 10rem) 0 2rem; background: var(--ivory); color: var(--ink); }
+.heading { padding: 0 1.5rem clamp(3rem, 6vw, 6rem); text-align: center; }
+.rule { display: block; width: 1px; height: 3rem; margin: 0 auto 2.5rem; background: var(--gold); }
+.heading h2 { max-width: 15ch; margin: 0 auto; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.8rem, 5.8vw, 6.8rem); font-weight: 400; line-height: 1.03; letter-spacing: -0.055em; text-wrap: balance; }
+@media (max-width: 600px) { .section { padding-top: 4.5rem; } .heading { padding-inline: 1.25rem; } .rule { height: 2rem; margin-bottom: 2rem; } }

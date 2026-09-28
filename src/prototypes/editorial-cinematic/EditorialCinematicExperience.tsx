@@ -8,6 +8,7 @@ import { CoupleGallery } from "./chapters/CoupleGallery";
 import { PortraitStack } from "./chapters/PortraitStack";
 import { Celebration } from "./chapters/Celebration";
 import { MessageWall } from "./chapters/MessageWall";
+import { Guests } from "./chapters/Guests";
 import { CinematicClosing } from "./chapters/CinematicClosing";
 import { PrototypeSmoothScroll } from "./PrototypeSmoothScroll";
 import styles from "./editorial-cinematic.module.css";
@@ -53,6 +54,7 @@ export function EditorialCinematicExperience({ data }: EditorialCinematicExperie
           location={data.location}
           images={data.celebrationImages}
         />
+        {data.guests && <Guests content={data.guests} />}
         <MessageWall
           couple={`${data.couple.partnerOne} e ${data.couple.partnerTwo}`}
           guestbook={data.guestbook}
